@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Результаты - Игротест</title>
+<link href="{% static 'index/stylesheet.css' %}" rel="stylesheet">
+<link href="{% static 'index/favicon.ico' %}" rel="icon">
+<div id="student-title">Результаты</div>
+<div class="student-info block">
+    <div class="student-info_image">
+        {% if test.scene == 'office' %}
+        <img src="{% static 'index/office.png' %}">
+        {% elif test.scene == 'workshop' %}
+        <img src="{% static 'index/workshop.png' %}">
+        {% endif %}
+    </div>
+    <div class="student-info_text">{{ test.title }}</div>
+</div>
+<div class="student-info block">
+    <div class="student-info_image">
+        {% if student_character == "Адам" %}
+        <img src="{% static 'index/adam.png' %}">
+        {% elif student_character == "Амелия" %}
+        <img src="{% static 'index/amelia.png' %}">
+        {% elif student_character == "Боб" %}
+        <img src="{% static 'index/bob.png' %}">
+        {% endif %}
+    </div>
+    <div class="student-info_text">
+        {% if test_result.points > half_tasks_quantity %}
+        ТЫ молодец!
+        {% else %}
+        Надо повторить.
+        {% endif %}
+        <br>
+        ПравильнЫх ответов {{ test_result.points }} из {{ test.tasks|length }}
+    </div>
+</div>
+<div id="student-results" class="block">
+    {% for test_result_ in test_results %}
+    <div class="student-result {% if test_result_.student_firstname == test_result.student_firstname and test_result_.student_lastname == test_result.student_lastname and test_result_.student_class == test_result.student_class %}accent{% endif %}">
+        <div class="student-result_number">{{ forloop.counter }}</div>
+        <div class="student-result_fullname-class">{{ test_result_.student_firstname }} {{ test_result_.student_lastname }} {{ test_result_.student_class }}</div>
+        <div class="student-result_points">{{ test_result_.points }}</div>
+    </div>
+    {% endfor %}
+</div>
+<form class="student-form" method="get" action="/">
+    <input type="hidden" name="testPk" value="{{ test.pk }}" />
+    <input type="hidden" name="studentFirstname" value="{{ test_result.student_firstname }}" />
+    <input type="hidden" name="studentLastname" value="{{ test_result.student_lastname }}" />
+    <input type="hidden" name="studentClass" value="{{ test_result.student_class }}" />
+    <input type="hidden" name="studentCharacter" value="{{ student_character }}" />
+    <div class="student-form_submit-pile"></div>
+    <button class="student-form_submit">Повторить</button>
+</form>
+<a href="/login?testPk={{ test.pk }}">
+    <button class="student-form_submit" style="bottom: calc(24px + 48px + 24px); background-color: #ffffff">Ко входу</button>
+</a>

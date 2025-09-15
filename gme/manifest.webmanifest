@@ -1,0 +1,12 @@
+{
+  "name": "Игротест",
+  "short_name": "Игротест",
+  "id": "com.example.gamename",
+  "description": "Геймифицированное тестирование на основе квеста",
+  "orientation": "any",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "black",
+  "categories": ["games", "entertainment"],
+  "icons": []
+}

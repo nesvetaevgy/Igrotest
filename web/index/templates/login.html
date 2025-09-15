@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Вход - Игротест</title>
+<link href="{% static 'index/stylesheet.css' %}" rel="stylesheet">
+<link href="{% static 'index/favicon.ico' %}" rel="icon">
+<div id="student-title">Вход</div>
+<div class="student-info block">
+    <div class="student-info_image">
+        {% if test.scene == 'office' %}
+        <img src="{% static 'index/office.png' %}" alt="Офис">
+        {% elif test.scene == 'workshop' %}
+        <img src="{% static 'index/workshop.png' %}" alt="Мастерская">
+        {% endif %}
+    </div>
+    <div class="student-info_text">{{ test.title }}</div>
+</div>
+<form id="student-form" method="get" action="/cross">
+    <input type="hidden" name="testPk" value="{{ test.pk }}" />
+    <div class="student-parameter student-parameter-string">
+        <div class="student-parameter_title">Имя</div>
+        <div class="student-parameter-string_input block">
+            <input type="text" name="studentFirstname" required="required">
+        </div>
+    </div>
+    <div class="student-parameter student-parameter-string">
+        <div class="student-parameter_title">Фамилия</div>
+        <div class="student-parameter-string_input block">
+            <input type="text" name="studentLastname" required="required">
+        </div>
+    </div>
+    <div class="student-parameter student-parameter-string">
+        <div class="student-parameter_title">Класс</div>
+        <div class="student-parameter-string_input block">
+            <input type="text" name="studentClass" required="required">
+        </div>
+    </div>
+    <div class="student-parameter student-parameter-choice-grid">
+        <div class="student-parameter_title">Персонаж</div>
+        <div class="student-parameter-choice-grid_input">
+            <input class="button" type="radio" name="studentCharacter" value="Адам" checked="checked" style="background-image: url({% static 'index/adam.png' %});">
+            <input class="button" type="radio" name="studentCharacter" value="Амелия" style="background-image: url({% static 'index/amelia.png' %});">
+            <input class="button" type="radio" name="studentCharacter" value="Боб" style="background-image: url({% static 'index/bob.png' %});">
+        </div>
+    </div>
+    <div class="student-form_submit-pile"></div>
+    <button class="student-form_submit">Начать</button>
+</form>

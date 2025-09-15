@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    max-width: 425px;
+
+    margin: auto;
+
+    padding: 24px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    font-family: Pixelify Sans, sans-serif;
+    font-size: 24px;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.block {
+    border: 4px solid #000000;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+#student-title {
+    font-size: 36px;
+    text-align: center;
+}
+
+.student-info {
+    height: 96px;
+
+    padding: 0 16px;
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.student-info_image {
+    height: 64px;
+    aspect-ratio: 1 / 1;
+
+    flex-shrink: 0;
+}
+.student-info_text {
+    height: 64px;
+
+    font-size: 20px;
+}
+
+
+#student-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.student-parameter {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.student-parameter_title {}
+
+.student-parameter-string {}
+.student-parameter-string_input {
+    height: 48px;
+}
+.student-parameter-string_input input {
+    all: unset;
+    
+    width: calc(100% - 12px - 4px * 3);
+    height: 100%;
+
+    padding: 0 12px;
+}
+
+.student-parameter-choice-grid {
+    gap: 24px;
+}
+.student-parameter-choice-grid_input {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+}
+.student-parameter-choice-grid_input input {
+    all: unset;
+
+    aspect-ratio: 1 / 1;
+
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.student-parameter-choice-grid_input input:checked {
+    border: 4px solid #000000;
+}
+.student-form_submit {
+    all: unset;
+
+    position: fixed;
+    bottom: 24px;
+    
+    width: calc(100vw - 24px * 2 - 4px * 2);
+    max-width: calc(425px - 4px * 2);
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 4px solid #000000;
+
+    background-color: #E7CCFF;
+}
+.student-form_submit:hover {
+    cursor: pointer;
+
+    background-color: #CF99FF;
+}
+
+.student-form_submit-pile {
+    height: calc(48px + 24px * 2);
+}
+
+
+#student-results {
+    display: flex;
+    flex-direction: column;
+}
+
+.student-result {
+    height: 48px;
+
+    padding: 0 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+.student-result:not(:last-child) {
+    border-bottom: 4px solid #000000;
+}
+.student-result.accent {
+    background-color: #E7CCFF;
+}
+
+.student-result_number, .student-result_points {
+    width: 24px;
+}
+
+.student-result_fullname-class {
+    width: 100%;
+}
